@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+import React from "react";
+import { appWithTranslation } from "next-i18next";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  React.useEffect(() => {
+    console.log("mount");
+    return () => {
+      console.log("unmount");
+    };
+  }, []);
+
+  return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default appWithTranslation(MyApp);
